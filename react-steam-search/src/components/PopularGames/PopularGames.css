@@ -1,0 +1,18 @@
+.popular-games {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 20px;
+}
+
+.popular-games__title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.popular-games__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

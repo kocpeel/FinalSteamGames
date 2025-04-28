@@ -1,0 +1,24 @@
+.wishlist {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 20px;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &__empty {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888888;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
