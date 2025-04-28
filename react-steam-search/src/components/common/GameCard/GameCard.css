@@ -8,6 +8,9 @@
   max-width: 300px;
   position: relative;
   border: 1px solid #2a3f5a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .game-card__header {
