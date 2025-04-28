@@ -33,6 +33,11 @@
     color: #ffffff;
   }
 
+  &__header-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
   &__info {
     display: flex;
     flex-wrap: wrap;

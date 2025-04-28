@@ -33,6 +33,11 @@
   color: #ffffff;
 }
 
+.game-details__header-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
 .game-details__info {
   display: flex;
   flex-wrap: wrap;

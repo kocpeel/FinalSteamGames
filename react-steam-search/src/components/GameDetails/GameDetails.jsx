@@ -78,21 +78,26 @@ const GameDetails = () => {
           <Link to="/" className="game-details__back">
             Powrót
           </Link>
-          {isInWishlist(game.appid) ? (
-            <button
-              onClick={() => removeFromWishlist(game.appid)}
-              className="game-details__wishlist-remove"
-            >
-              Usuń z listy życzeń
-            </button>
-          ) : (
-            <button
-              onClick={() => addToWishlist(game)}
-              className="game-details__wishlist-add"
-            >
-              Dodaj do listy życzeń
-            </button>
-          )}
+          <div className="game-details__header-buttons">
+            {isInWishlist(game.appid) ? (
+              <button
+                onClick={() => removeFromWishlist(game.appid)}
+                className="game-details__wishlist-remove"
+              >
+                Usuń z listy życzeń
+              </button>
+            ) : (
+              <button
+                onClick={() => addToWishlist(game)}
+                className="game-details__wishlist-add"
+              >
+                Dodaj do listy życzeń
+              </button>
+            )}
+            <Link to="/wishlist" className="popular-games__wishlist-link">
+              Lista życzeń
+            </Link>
+          </div>
         </div>
       </div>
 
