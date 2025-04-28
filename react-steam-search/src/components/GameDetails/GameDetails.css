@@ -16,6 +16,12 @@
   padding: 30px;
 }
 
+.game-details__name {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .game-details__tags {
   display: flex;
   flex-direction: column;

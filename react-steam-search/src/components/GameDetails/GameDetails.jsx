@@ -74,7 +74,6 @@ const GameDetails = () => {
   return (
     <div className="game-details">
       <div className="game-details__header">
-        <h1>{game.name}</h1>
         <div className="game-details__actions">
           <Link to="/" className="game-details__back">
             Powrót
@@ -97,40 +96,41 @@ const GameDetails = () => {
         </div>
       </div>
 
-      <div className="game-details__screenshots">
-        <h2>Zrzuty ekranu</h2>
-        <div className="game-details__screenshots-carousel">
-          <button
-            className="game-details__carousel-button game-details__carousel-button--prev"
-            onClick={prevScreenshot}
-          >
-            &lt;
-          </button>
-          <img
-            src={game.screenshots[currentScreenshot]}
-            alt={`Screenshot ${currentScreenshot + 1}`}
-            className="game-details__screenshot"
-          />
-          <button
-            className="game-details__carousel-button game-details__carousel-button--next"
-            onClick={nextScreenshot}
-          >
-            &gt;
-          </button>
-        </div>
-        <div className="game-details__screenshots-dots">
-          {game.screenshots.map((_, index) => (
-            <button
-              key={index}
-              className={`game-details__dot ${
-                index === currentScreenshot ? "active" : ""
-              }`}
-              onClick={() => setCurrentScreenshot(index)}
-            />
-          ))}
-        </div>
-      </div>
       <div className="game-details__content">
+        <h1 className="game-details__name">{game.name}</h1>
+
+        <div className="game-details__screenshots">
+          <div className="game-details__screenshots-carousel">
+            <button
+              className="game-details__carousel-button game-details__carousel-button--prev"
+              onClick={prevScreenshot}
+            >
+              &lt;
+            </button>
+            <img
+              src={game.screenshots[currentScreenshot]}
+              alt={`Screenshot ${currentScreenshot + 1}`}
+              className="game-details__screenshot"
+            />
+            <button
+              className="game-details__carousel-button game-details__carousel-button--next"
+              onClick={nextScreenshot}
+            >
+              &gt;
+            </button>
+          </div>
+          <div className="game-details__screenshots-dots">
+            {game.screenshots.map((_, index) => (
+              <button
+                key={index}
+                className={`game-details__dot ${
+                  index === currentScreenshot ? "active" : ""
+                }`}
+                onClick={() => setCurrentScreenshot(index)}
+              />
+            ))}
+          </div>
+        </div>
         <div className="game-details__info">
           <p className="game-details__price">{game.price}</p>
           <p className="game-details__publisher">Wydawca: {game.publisher}</p>
