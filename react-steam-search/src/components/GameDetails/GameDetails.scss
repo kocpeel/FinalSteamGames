@@ -3,10 +3,22 @@
   margin: 0 auto;
   padding: 80px 20px 20px;
 
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   &__content {
     background-color: #2a2a2a;
     border-radius: 8px;
     padding: 30px;
+  }
+
+  &__tags {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   &__title {
@@ -18,8 +30,12 @@
   &__info {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     margin-bottom: 30px;
+    flex-direction: column !important;
+
+    p {
+      margin: 0.5rem;
+    }
   }
 
   &__publisher,
@@ -27,6 +43,11 @@
   &__players {
     font-size: 1.2rem;
     color: #cccccc;
+  }
+
+  &__price {
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
   &__description {
@@ -79,6 +100,91 @@
       &:hover {
         background-color: #d32f2f;
       }
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #2a3f5a;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  &__screenshots {
+    margin-bottom: 30px;
+
+    h2 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__screenshots-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__screenshot {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+  }
+
+  &__carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    &--prev {
+      left: 10px;
+    }
+
+    &--next {
+      right: 10px;
+    }
+  }
+
+  &__screenshots-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #777;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    padding: 0 !important;
+
+    &:hover {
+      background-color: #999;
+    }
+
+    &.active {
+      background-color: #fff;
     }
   }
 }

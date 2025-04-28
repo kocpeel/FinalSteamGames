@@ -9,6 +9,7 @@ const GameDetails = () => {
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentScreenshot, setCurrentScreenshot] = useState(0);
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   useEffect(() => {
@@ -32,6 +33,18 @@ const GameDetails = () => {
     fetchGameDetails();
   }, [appid]);
 
+  const nextScreenshot = () => {
+    setCurrentScreenshot((prev) =>
+      prev === game.screenshots.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevScreenshot = () => {
+    setCurrentScreenshot((prev) =>
+      prev === 0 ? game.screenshots.length - 1 : prev - 1
+    );
+  };
+
   if (loading) {
     return <div className="game-details loading">Ładowanie...</div>;
   }
@@ -47,9 +60,13 @@ const GameDetails = () => {
   const formatRequirements = (requirements) => {
     if (typeof requirements === "string") return requirements;
     if (typeof requirements === "object") {
-      return Object.entries(requirements)
-        .map(([key, value]) => `${key}: ${value}`)
-        .join("\n");
+      return (
+        <div className="game-details__requirements-content">
+          {Object.entries(requirements).map(([key, value]) => (
+            <div key={key} dangerouslySetInnerHTML={{ __html: value }} />
+          ))}
+        </div>
+      );
     }
     return "Wymagania sprzętowe niedostępne";
   };
@@ -80,9 +97,42 @@ const GameDetails = () => {
         </div>
       </div>
 
+      <div className="game-details__screenshots">
+        <h2>Zrzuty ekranu</h2>
+        <div className="game-details__screenshots-carousel">
+          <button
+            className="game-details__carousel-button game-details__carousel-button--prev"
+            onClick={prevScreenshot}
+          >
+            &lt;
+          </button>
+          <img
+            src={game.screenshots[currentScreenshot]}
+            alt={`Screenshot ${currentScreenshot + 1}`}
+            className="game-details__screenshot"
+          />
+          <button
+            className="game-details__carousel-button game-details__carousel-button--next"
+            onClick={nextScreenshot}
+          >
+            &gt;
+          </button>
+        </div>
+        <div className="game-details__screenshots-dots">
+          {game.screenshots.map((_, index) => (
+            <button
+              key={index}
+              className={`game-details__dot ${
+                index === currentScreenshot ? "active" : ""
+              }`}
+              onClick={() => setCurrentScreenshot(index)}
+            />
+          ))}
+        </div>
+      </div>
       <div className="game-details__content">
         <div className="game-details__info">
-          <p className="game-details__price">Cena: {game.price}</p>
+          <p className="game-details__price">{game.price}</p>
           <p className="game-details__publisher">Wydawca: {game.publisher}</p>
           <p className="game-details__players">
             Graczy online: {game.players_online}
@@ -96,12 +146,6 @@ const GameDetails = () => {
           <h2>Opis</h2>
           <p>{game.description}</p>
         </div>
-
-        <div className="game-details__requirements">
-          <h2>Wymagania sprzętowe</h2>
-          <pre>{formatRequirements(game.requirements)}</pre>
-        </div>
-
         <div className="game-details__genres">
           <h2>Gatunki</h2>
           <div className="game-details__tags">
@@ -112,19 +156,9 @@ const GameDetails = () => {
             ))}
           </div>
         </div>
-
-        <div className="game-details__screenshots">
-          <h2>Zrzuty ekranu</h2>
-          <div className="game-details__screenshots-grid">
-            {game.screenshots.map((screenshot, index) => (
-              <img
-                key={index}
-                src={screenshot}
-                alt={`Screenshot ${index + 1}`}
-                className="game-details__screenshot"
-              />
-            ))}
-          </div>
+        <div className="game-details__requirements">
+          <h2>Wymagania sprzętowe</h2>
+          {formatRequirements(game.requirements)}
         </div>
       </div>
     </div>

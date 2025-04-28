@@ -7,10 +7,11 @@
   transition: transform 0.2s;
   max-width: 300px;
   position: relative;
+  border: 1px solid #2a3f5a;
 
-  &:hover {
-    transform: translateY(-5px);
-  }
+  // &:hover {
+  //   transform: translateY(-5px);
+  // }
 
   &__header {
     display: flex;

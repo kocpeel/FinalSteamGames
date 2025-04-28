@@ -22,15 +22,17 @@ const Wishlist = () => {
 
   return (
     <div className="wishlist">
-      <h2>Lista życzeń</h2>
+      <div className="ver-x">
+        <h2>Lista życzeń</h2>
+        <Link to="/" className="wishlist__back">
+          Strona Główna
+        </Link>
+      </div>
       <div className="games-grid">
         {wishlist.map((game) => (
           <GameCard key={game.appid} game={game} />
         ))}
       </div>
-      <Link to="/" className="wishlist__back">
-        Wróć do strony głównej
-      </Link>
     </div>
   );
 };
