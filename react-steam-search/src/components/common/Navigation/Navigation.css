@@ -1,28 +1,30 @@
 .navigation {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  background-color: #171a21;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.navigation__links {
   display: flex;
-  gap: 10px;
+  gap: 24px;
+  justify-content: center;
 }
 
-.navigation__button {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  padding: 10px 20px;
+.navigation__link {
+  color: #b8b6b4;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 16px;
   border-radius: 4px;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s;
 }
 
-.navigation__button:hover {
-  background-color: #3a3a3a;
+.navigation__link:hover {
+  color: #fff;
+  background-color: #2a3f5a;
 }
 
-.navigation__button--wishlist {
-  background-color: #4caf50;
-}
-
-.navigation__button--wishlist:hover {
-  background-color: #45a049;
+.navigation__link.active {
+  color: #fff;
+  background-color: #2a3f5a;
 }

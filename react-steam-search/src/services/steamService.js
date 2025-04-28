@@ -26,7 +26,6 @@ class SteamService {
 
       for (const item of data.items) {
         try {
-          // Extract appid from logo URL
           const logoUrl = item.logo;
           const appidMatch = logoUrl.match(/steam\/\w+\/(\d+)/);
           if (!appidMatch) {
@@ -39,6 +38,9 @@ class SteamService {
             name: item.name,
             appid: appid,
             price: await this._getPrice(appid),
+            publisher: item.publisher || "Wydawca nieznany",
+            description: item.description || "Brak opisu",
+            players_online: await this._getCurrentPlayers(appid),
           };
           games.push(game);
         } catch (error) {
@@ -51,6 +53,32 @@ class SteamService {
     } catch (error) {
       console.error("Error fetching games:", error);
       return null;
+    }
+  }
+
+  async _getCurrentPlayers(appid) {
+    try {
+      const response = await axios.get(
+        `/api/ISteamUserStats/GetNumberOfCurrentPlayers/v1/`,
+        {
+          params: {
+            appid: appid,
+          },
+        }
+      );
+
+      if (response.status !== 200) {
+        return "Brak danych";
+      }
+
+      const data = response.data;
+      if (data.response && data.response.player_count) {
+        return data.response.player_count;
+      }
+      return "Brak danych";
+    } catch (error) {
+      console.error(`Error getting current players for app ${appid}:`, error);
+      return "Brak danych";
     }
   }
 
@@ -138,6 +166,7 @@ class SteamService {
         release_date: gameData.release_date?.date || "Data wydania niedostępna",
         genres: gameData.genres?.map((g) => g.description) || [],
         categories: gameData.categories?.map((c) => c.description) || [],
+        players_online: await this._getCurrentPlayers(appid),
       };
     } catch (error) {
       console.error(`Error getting game details for app ${appid}:`, error);

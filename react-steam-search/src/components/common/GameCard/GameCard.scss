@@ -1,10 +1,11 @@
 .game-card {
-  background-color: #2a2a2a;
+  background-color: #1b2838;
   border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  transition: transform 0.2s ease;
-  cursor: pointer;
+  padding: 16px;
+  margin: 16px;
+  color: #fff;
+  transition: transform 0.2s;
+  max-width: 300px;
 
   &:hover {
     transform: translateY(-5px);
@@ -14,52 +15,41 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   &__title {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #ffffff;
-  }
-
-  &__wishlist {
-    font-size: 1.5rem;
-    color: #666666;
-    transition: color 0.2s ease;
-
-    &.active {
-      color: #ffd700;
-    }
-
-    &:hover {
-      color: #ffd700;
-    }
-  }
-
-  &__content {
-    color: #cccccc;
-  }
-
-  &__publisher {
-    font-size: 1rem;
-    color: #888888;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
   }
 
   &__price {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #4caf50;
+    font-size: 16px;
+    color: #66c0f4;
+    margin: 0;
+  }
+
+  &__content {
+    font-size: 14px;
+  }
+
+  &__publisher {
+    margin: 8px 0;
+    color: #8f98a0;
   }
 
   &__players {
-    font-size: 1rem;
-    color: #888888;
+    margin: 8px 0;
+    color: #66c0f4;
   }
 
   &__description {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    line-height: 1.4;
+    margin: 8px 0;
+    color: #8f98a0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
