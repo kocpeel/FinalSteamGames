@@ -1,7 +1,3 @@
-# Note
-
-Current repo state is to be refactored - if you wish to check its working state on localhost, please check https://github.com/kocpeel/FinalSteamGames/tree/e4095775e8f20d2c6ad39b0b3e61a618e71e50e2
-
 
 # Project Functionality
 
@@ -18,7 +14,6 @@ Display includes:
 # How to run it
 
 cd react-steam-search
-npm install
 npm run dev
 ctrl + click the link
 

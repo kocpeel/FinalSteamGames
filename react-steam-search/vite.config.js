@@ -7,8 +7,9 @@ export default defineConfig({
     port: 5173,
     proxy: {
       "/api": {
-        target: "http://localhost:5173",
+        target: "https://api.steampowered.com",
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
       "/store": {
         target: "https://store.steampowered.com",
