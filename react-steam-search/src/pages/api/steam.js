@@ -23,10 +23,18 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
     res.status(200).json(response.data);
   } catch (error) {
     console.error("Steam API Error:", error);
-    res.status(500).json({ error: "Failed to fetch from Steam API" });
+    res.status(500).json({
+      error: "Failed to fetch from Steam API",
+      details: error.message,
+    });
   }
 }
