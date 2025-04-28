@@ -18,6 +18,7 @@ Display includes:
 # How to run it
 
 cd react-steam-search
+npm install
 npm run dev
 ctrl + click the link
 
