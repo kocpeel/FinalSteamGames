@@ -5,7 +5,7 @@ import GameCard from "../common/GameCard/GameCard";
 import "./Wishlist.scss";
 
 const Wishlist = () => {
-  const { wishlist, removeFromWishlist } = useWishlist();
+  const { wishlist } = useWishlist();
 
   if (wishlist.length === 0) {
     return (
@@ -23,17 +23,9 @@ const Wishlist = () => {
   return (
     <div className="wishlist">
       <h2>Lista życzeń</h2>
-      <div className="wishlist__games">
+      <div className="games-grid">
         {wishlist.map((game) => (
-          <div key={game.appid} className="wishlist__game">
-            <GameCard game={game} />
-            <button
-              onClick={() => removeFromWishlist(game.appid)}
-              className="wishlist__remove"
-            >
-              Usuń z listy życzeń
-            </button>
-          </div>
+          <GameCard key={game.appid} game={game} />
         ))}
       </div>
       <Link to="/" className="wishlist__back">

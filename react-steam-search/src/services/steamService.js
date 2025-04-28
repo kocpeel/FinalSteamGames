@@ -34,17 +34,27 @@ class SteamService {
           }
           const appid = appidMatch[1];
 
+          // Pobierz szczegóły gry
+          const gameDetails = await this.getGameDetails(appid);
+          if (!gameDetails) continue;
+
           const game = {
             name: item.name,
             appid: appid,
             price: await this._getPrice(appid),
-            publisher: item.publisher || "Wydawca nieznany",
-            description: item.description || "Brak opisu",
+            publisher: gameDetails.publisher,
+            description: gameDetails.description,
             players_online: await this._getCurrentPlayers(appid),
+            header_image: gameDetails.header_image,
+            screenshots: gameDetails.screenshots,
+            release_date: gameDetails.release_date,
+            genres: gameDetails.genres,
+            categories: gameDetails.categories,
+            requirements: gameDetails.requirements,
           };
           games.push(game);
         } catch (error) {
-          console.warn(`Warning: Missing logo data:`, error);
+          console.warn(`Warning: Error processing game:`, error);
           continue;
         }
       }

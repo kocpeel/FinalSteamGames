@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { WishlistProvider } from "./context/WishlistContext";
 import Navigation from "./components/common/Navigation/Navigation";
 import PopularGames from "./components/PopularGames/PopularGames";
@@ -12,7 +12,14 @@ const App = () => {
     <WishlistProvider>
       <Router>
         <div className="app">
-          <Navigation />
+          <header className="app__header">
+            <Navigation />
+            <div className="app__wishlist-link">
+              <Link to="/wishlist" className="wishlist-button">
+                Lista życzeń
+              </Link>
+            </div>
+          </header>
           <main className="app__content">
             <Routes>
               <Route path="/" element={<PopularGames />} />

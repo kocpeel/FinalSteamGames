@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useWishlist } from "../../context/WishlistContext";
+import { useWishlist } from "../../../context/WishlistContext";
 import "./GameCard.scss";
 
 const GameCard = ({ game }) => {

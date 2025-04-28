@@ -44,12 +44,31 @@ const PopularGames = () => {
 
   return (
     <div className="popular-games">
-      <h2>Popularne Gry</h2>
+      <div className="popular-games__header">
+        <h2>Popularne Gry</h2>
+        <Link to="/wishlist" className="popular-games__wishlist-link">
+          Lista życzeń
+        </Link>
+      </div>
       <div className="games-grid">
         {games.map((game) => (
-          <Link to={`/game/${game.appid}`} key={game.appid}>
-            <GameCard game={game} />
-          </Link>
+          <GameCard
+            key={game.appid}
+            game={{
+              name: game.name,
+              appid: game.appid,
+              price: game.price,
+              publisher: game.publisher,
+              description: game.description,
+              players_online: game.players_online,
+              header_image: game.header_image,
+              screenshots: game.screenshots,
+              release_date: game.release_date,
+              genres: game.genres,
+              categories: game.categories,
+              requirements: game.requirements,
+            }}
+          />
         ))}
       </div>
     </div>

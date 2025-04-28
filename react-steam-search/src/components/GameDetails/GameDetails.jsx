@@ -99,10 +99,7 @@ const GameDetails = () => {
 
         <div className="game-details__requirements">
           <h2>Wymagania sprzętowe</h2>
-          <div>{formatRequirements(game.requirements)}</div>
-          {/* prev - <pre> 
-           requrements in "" causing problems with styling
-          */}
+          <pre>{formatRequirements(game.requirements)}</pre>
         </div>
 
         <div className="game-details__genres">
