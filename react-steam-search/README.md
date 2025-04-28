@@ -1,10 +1,4 @@
 
-# How to run it
-
-cd react-steam-search
-npm run dev
-ctrl + click the link
-
 # Project Functionality
 
 Displays 10 most popular games
@@ -16,6 +10,12 @@ Display includes:
 - amount of current players
 - description
 - button that lets you add a game to favorites
+
+# How to run it
+
+cd react-steam-search
+npm run dev
+ctrl + click the link
 
 
 # React + Vite
