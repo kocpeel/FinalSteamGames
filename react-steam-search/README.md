@@ -17,6 +17,10 @@ cd react-steam-search
 npm run dev
 ctrl + click the link
 
+## On mobile
+
+npm run dev -- --host
+type the network link into your mobile browser
 
 # React + Vite
 
